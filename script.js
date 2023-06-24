@@ -7,6 +7,8 @@ const sliders = document.querySelectorAll('input[type="range"]')
 const menus = document.querySelectorAll('.menu')
 const waveSliders = document.querySelector('.wave-sliders')
 const colorSliders = document.querySelector('.wave-color-sliders')
+const captureBtn = document.querySelector('#capture')
+const videoBtn = document.querySelector('#video')
 let shaper = 0;
 let increment = 0.01;
 
@@ -37,6 +39,59 @@ const fillStyle = {
     g: 0,
     b: 0,
     a: 0.1
+}
+
+
+// take screenshot
+captureBtn.addEventListener('click', () => {
+    try {
+        html2canvas(canvas).then(function(canvas) {
+            document.body.appendChild(canvas);
+            const url = canvas.toDataURL('image/png')
+            const a = document.createElement('a')
+            a.setAttribute('download', 'imageName.png')
+            a.setAttribute('href', url)
+            a.click()
+        })
+    } catch (err) {
+        alert('Error taking screenshot :' + err)
+    }
+});
+
+// take video 
+videoBtn.addEventListener('click', () => {
+    startCapture()
+})
+
+async function startCapture() {
+    let captureStream = null
+    try {
+        captureStream = await navigator.mediaDevices.getDisplayMedia();
+    } catch (err) {
+        console.error(`Capture error : ${err}`)
+    }
+    const data = []
+    const mediaRecorder = new MediaRecorder(captureStream)
+
+    mediaRecorder.ondataavailable = (e) => {
+        data.push(e.data)
+        console.log(e.data)
+    }
+    mediaRecorder.start()
+    setTimeout(() => {
+        mediaRecorder.stop()
+    }, 10000)
+    mediaRecorder.onstop = (e) => {
+        const url = URL.createObjectURL(
+            new Blob(data)
+        )
+        const a = document.createElement('a')
+        a.setAttribute('download', 'SineWaves.mp4')
+        a.setAttribute('href', url)
+        a.click()
+    }
+    console.log(captureStream)
+    return captureStream
 }
 
 menus.forEach(menu => {
@@ -120,5 +175,4 @@ const animate = () => {
 }
 
 animate()
-
 
