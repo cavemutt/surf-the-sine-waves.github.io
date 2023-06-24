@@ -7,7 +7,8 @@ const sliders = document.querySelectorAll('input[type="range"]')
 const menus = document.querySelectorAll('.menu')
 const waveSliders = document.querySelector('.wave-sliders')
 const colorSliders = document.querySelector('.wave-color-sliders')
-const arrows = Array.from(document.querySelectorAll('.menu span'))       
+let shaper = 0;
+let increment = 0.01;
 
 window.onresize = () => location.reload();
 
@@ -41,14 +42,12 @@ const fillStyle = {
 menus.forEach(menu => {
     menu.addEventListener("click", (e) => {
         if('dynamics' in e.target.dataset) {
-            console.log('dynamics')
             waveSliders.classList.add('open')
             colorSliders.classList.remove('open')            
             menus[0].classList.add('open')
             menus[1].classList.remove('open')
         }       
         if('color' in e.target.dataset) {
-            console.log('color')
             colorSliders.classList.add('open')
             waveSliders.classList.remove('open')
             menus[1].classList.add('open')
@@ -58,7 +57,7 @@ menus.forEach(menu => {
 })
 
 sliders.forEach(slider => {
-    slider.addEventListener('input', (e) => {
+    slider.addEventListener('input', () => {
         if(slider.name === "length") {
             wave.length = slider.value
         }
@@ -66,8 +65,10 @@ sliders.forEach(slider => {
             wave.amplitude = slider.value
         }
         if(slider.name === "frequency") {
-            // console.log(slider.value)
-            // wave.frequency === slider.value
+            wave.frequency = slider.value
+        }
+        if(slider.name === "shaper") {
+            shaper = slider.value
         }
         if(slider.name === "hue") {
             strokeColor.h = slider.value
@@ -98,7 +99,7 @@ const colorizeSliders = (hue, sat, lightness) => {
 body.style.backgroundColor = `rgba(${backgroundColor.r} ${backgroundColor.g} ${backgroundColor.b} ${backgroundColor.a})`
 
 
-let increment = wave.frequency
+// let increment = wave.frequency
 
 const animate = () => {
     requestAnimationFrame(animate);
@@ -106,28 +107,18 @@ const animate = () => {
     c.fillRect(0, 0, canvas.width, canvas.height);
     c.beginPath();
     c.moveTo(0, canvas.height / 2);
-        for(let i = 0; i < canvas.width; i++) {
-        c.lineTo(i, wave.y + Math.sin(i * wave.length + increment) * wave.amplitude * Math.sin(increment));
+    for(let i = 0; i < canvas.width; i++) {
+        c.lineTo(i, wave.y + Math.sin(i * wave.length + increment) * wave.amplitude * Math.sin(i*shaper + increment));
     }
     let hue = strokeColor.h * Math.abs(Math.sin(increment))
     let sat = strokeColor.s
     let lightness = strokeColor.l
     c.strokeStyle = `hsl(${hue} ${sat}% ${lightness}%)`
     c.stroke();
-    increment += wave.frequency
+    increment += parseFloat(wave.frequency)
     colorizeSliders(hue, sat, lightness)
 }
 
 animate()
-// use animate to use sliders in real time
-
-// *Math.sin() alternates(if incrementing) outputs -1 to 1 for any input you give it
-// then add Amplitude by multiplying it by something 
-// then affect the wavelength by multiplying i by decimal 
-
-// *Sine Wave, you need every pixel on the line to be
-// editable on the y axis 
-
-// adding *Math.sin(increment) to color value, will return the max value being whatever it's originally set at(200) and the min value will be the opposite of that (-200) so use Math.abs with it
 
 

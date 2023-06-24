@@ -3,12 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="script.js" defer></script>
+        <link rel="icon" type="image/png" href="./assets/jcacmLogo400.png">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
         <title>Sine Waves</title>
     </head>
     <body>
         <header>
+            <div class="logo-container">
+                <a class="logo" target="_blank" href="https://github.com/cavemutt/surf-the-sine-waves.github.io">
+                    <img src="./assets/jcacmLogo400.png" alt="logo">
+                    <p>Jencat & Cavemutt</p>
+                </a>
+            </div>
             <h1>Surf some Sine Waves</h1>
             <div class="expander">
                 <h2 class="menu" data-dynamics>Wave Dynamics</h2>
@@ -19,36 +26,38 @@
             <div class="wave-sliders slider-container">
                 <div class="slider">
                     <span>Length</span><br>
-                    <input type="range" min="-0.01" max="0.1" name="length" step="0.001" class="length-input input">
+                    <input type="range" min="-0.01" max="0.1" name="length" step="0.001" value="0.01" class="length-input input">
                 </div>
                 <div class="slider">
                     <span>Amplitude</span><br>
-                    <input type="range" min="-300" max="300" name="amplitude" step="1" class="amplitude-input input">
+                    <input type="range" min="-300" max="300" name="amplitude" step="1" value="150" class="amplitude-input input">
                 </div>
                 <div class="slider">
                     <span>Frequency</span><br>
-                    <input type="range" min="-0.01" max="0.1" name="frequency" step="0.001" class="frequency-input input">
+                    <input type="range" min="-0.01" max="0.1" name="frequency" step="0.001" value="0.01" class="frequency-input input">
+                </div>
+                <div class="slider">
+                    <span>Shaper</span><br>
+                    <input type="range" min="0" max="5" name="shaper" step="0.1" value="0" class="shaper-input input">
                 </div>
             </div>
             <div class="wave-color-sliders slider-container">
                 <div class="slider">
                     <span>Hue</span><br>
-                    <input type="range" min="0" max="255" name="hue" step="1" class="hue-input input">
+                    <input type="range" min="0" max="255" name="hue" step="1" value="200" class="hue-input input">
                 </div>
                 <div class="slider">
                     <span>Saturation</span><br>
-                    <input type="range" min="0" max="100" name="saturation" step="1" class="saturation-input input">
+                    <input type="range" min="0" max="100" name="saturation" step="1" value="50" class="saturation-input input">
                 </div>
                 <div class="slider">
                     <span>Lightness</span><br>
-                    <input type="range" min="0" max="100" name="lightness" step="1" class="lightness-input input">
+                    <input type="range" min="0" max="100" name="lightness" step="1" value="50" class="lightness-input input">
                 </div>
             </div>
         </section>
-        <!-- <h1>Hello World</h1> -->
+
         <canvas></canvas>
     
-
-        <!-- <script type="text/javascript" src="dat.gui.min.js"></script> -->
     </body>
 </html>
