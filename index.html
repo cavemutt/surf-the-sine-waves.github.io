@@ -5,57 +5,82 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="./assets/jcacmLogo400.png">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
-        <script src="script.js" defer></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./bubbleStyle.css">
+        <link rel="stylesheet" href="./style.css">
         <title>Sine Waves</title>
     </head>
     <body>
+        <div class="bubble-wrapper">
+            <!-- moved to header -->
+                <!-- <button class="open-billy-bubbles-btn start" id="billy-btn" title="open/close the Tour">
+                    <img src="./assets/Billy-paw-400.png" alt="Silly Billy's paw to open tour">
+                    <p id="billy-btn-tooltip">open/close Bubble Tour</p>
+                </button> -->
+                
+                <div id="bubble-intro" data-bubble="Hi! I'm Silly Billy! Let me take you on a little Bubble tour! (hit the >> button for the next tour stop!)"></div>
+                <div id="bubble-outro" data-bubble="Ok! Feel free to hit the Billy-paw button anytime to start the tour again. Bye and have fun!"></div>
+                <img id="bubble-indicator" src="./assets/Billy-paw-400.png" alt="Silly Billy's paw"></img>
+            
+                <div class="silly-billy-bubbles" id="silly-billy-bubbles">
+                    <div class="billy-bubble" id="billy-bubble">
+                        <img src="./assets/Billy-whiskers-700.png" alt="Silly Billy's head">
+                    </div>
+                    <div class="bubble-shaper"></div>
+                    <p class="bubble-content" id="bubble-content"></p>
+                    <button class="close-bubble bubble-btn" id="close-bubble" title="close Billy Bubbles">X</button>
+                    <button class="continue-bubble bubble-btn" id="continue-bubble" title="next Billy Bubble">>></button>
+                </div>
+        </div>
         <header>
             <div class="logo-container">
-                <a class="logo" target="_blank" href="https://github.com/cavemutt/surf-the-sine-waves.github.io">
-                    <img src="./assets/jcacmLogo400.png" alt="logo">
-                    <p>Jencat & Cavemutt</p>
+                <a class="logo" target="_blank" href="https://github.com/cavemutt/">
+                    <img src="./assets/jldev-final2-dkblue.png" alt="logo">
+                    <p>Jennifer Lee Dev</p>
                 </a>
             </div>
-            <h1>Surf some Sine Waves</h1>
+            <h1 id="app-title" data-bubble="This app uses HTML Canvas and the math sin() function to create some visually stunning effects that YOU can manipulate!">Surf some Sine Waves</h1>
             <div class="expander">
-                <h2 class="menu" data-dynamics>Wave Dynamics</h2>
-                <h2 class="menu" data-color>Wave Color</h2>
+                <h2 class="menu" data-dynamics id="wave-menu" data-bubble="In this menu, you will find slider controls to change the Wave Dynamics, such as the height, speed and shape of the wave.">Wave Dynamics</h2>
+                <h2 class="menu" data-color id="color-menu" data-bubble="In this menu, you will find slider controls to change the color styles of the wave, the hue, saturation and lightness.">Wave Color</h2>
             </div>
             <div class="capture-btns">
-                <button id="capture">Screenshot</button>
-                <button id="video">Video</button>
+                <button id="capture" class="button" data-bubble="Pressing this button takes a screenshot of the wave area for you to download and save.">Screenshot</button>
+                <button id="video" class="button" data-bubble="Pressing this button will allow you to take a 10 second video of the app to keep. Your browser will likely ask for permission and what part of your screen you'd like to focus on.">Video</button>
             </div>
+            <button class="open-billy-bubbles-btn start" id="billy-btn" title="open/close the Tour">
+                <img src="./assets/Billy-paw-400.png" alt="Silly Billy's paw to open tour">
+                <p id="billy-btn-tooltip">open/close Bubble Tour</p>
+            </button>
         </header>
         <section class="slider-section">
             <div class="wave-sliders slider-container">
-                <div class="slider">
+                <div class="slider" id="bubble-length" data-bubble="Changing the length of the wave changes the distance between the high and low curves.">
                     <span>Length</span><br>
-                    <input type="range" min="-0.01" max="0.1" name="length" step="0.001" value="0.01" class="length-input input">
+                    <input type="range" min="-0.01" max="0.1" value="0" name="length" step="0.001" class="length-input input">
                 </div>
-                <div class="slider">
+                <div class="slider" id="bubble-amplitude" data-bubble="Changing the amplitude of the wave changes the height of the highs and lows.">
                     <span>Amplitude</span><br>
-                    <input type="range" min="-300" max="300" name="amplitude" step="1" value="150" class="amplitude-input input">
+                    <input type="range" min="-300" max="300" value="150" name="amplitude" step="1" class="amplitude-input input">
                 </div>
-                <div class="slider">
+                <div class="slider" id="bubble-frequency" data-bubble="Increasing the frequency increases how quickly new waves are made, making it appear to be moving faster.">
                     <span>Frequency</span><br>
-                    <input type="range" min="-0.01" max="0.1" name="frequency" step="0.001" value="0.01" class="frequency-input input">
+                    <input type="range" min="-0.01" max="0.1" value="0.003" name="frequency" step="0.001" class="frequency-input input">
                 </div>
-                <div class="slider">
+                <div class="slider" id="bubble-shaper" data-bubble="This allows you to change the shape of the wave. Move the slider slowly to see all the different shapes you can make!">
                     <span>Shaper</span><br>
-                    <input type="range" min="0" max="5" name="shaper" step="0.1" value="0" class="shaper-input input">
+                    <input type="range" min="0" max="5" value="0" name="shaper" step="0.1" class="shaper-input input">
                 </div>
             </div>
             <div class="wave-color-sliders slider-container">
-                <div class="slider">
+                <div class="slider" id="bubble-hue" data-bubble="The color of the wave is also affected by a math loop, but you can change the base color here. For instance, move this slider all the way to the right to have a mostly blue wave.">
                     <span>Hue</span><br>
                     <input type="range" min="0" max="255" name="hue" step="1" value="200" class="hue-input input">
                 </div>
-                <div class="slider">
+                <div class="slider" id="bubble-saturation" data-bubble="The saturation of a color is how strong it is. No saturation makes a color gray; higher saturation makes a color really 'pop'!">
                     <span>Saturation</span><br>
                     <input type="range" min="0" max="100" name="saturation" step="1" value="50" class="saturation-input input">
                 </div>
-                <div class="slider">
+                <div class="slider" id="bubble-lightness" data-bubble="Making a color lighter brings it more towards white; lack of lightness makes the color black.">
                     <span>Lightness</span><br>
                     <input type="range" min="0" max="100" name="lightness" step="1" value="50" class="lightness-input input">
                 </div>
@@ -63,6 +88,14 @@
         </section>
 
         <canvas></canvas>
+
+        <footer>
+            <p>This app was hand-coded with love by Jennifer Lee Dev copyright &copy;2023</p>
+        </footer>
     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+        <script src="./script.js"></script>
+
     </body>
 </html>
+

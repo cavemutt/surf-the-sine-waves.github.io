@@ -1,0 +1,309 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Dhurjati&family=Fredoka:wght@700&family=Luckiest+Guy&family=Rancho&display=swap');
+/* "Bricolage Grotesque", "Dhurjati", "Fredoka", "Rancho", "Luckiest Guy" */
+/* lUCKIEST GUY is used in the fake app */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+/* Roboto is currently used in the Bubble content */
+
+/* Common Styles */
+
+:root {
+    --neon-blue:#216ce9;
+    --neon-green:#0aff36;
+    --neon-orange:#e89746;
+    --neon-purple:#fe00ea;
+    --neon-yellow:#cfff0f;
+    --neon-yellow-glow:rgba(207, 255, 15, 0.7);
+
+    /* below is for the bubbles, change bubble colors and font as desired */
+    --bubble-font: Roboto, sans-serif;
+    --bubble-font-size: 0.9rem;
+    --bubble-font-weight: 500;
+    --bubble-color: var(--neon-orange);
+    --bubble-content-color: var(--neon-blue);
+    --bubble-border-color: var(--neon-purple);
+    --bubble-indicator-color: var(--neon-green);
+    --bubble-boxshadow-color: var(--neon-yellow-glow);
+    --bubble-btn-color: var(--neon-green);
+    --bubble-highlighter-color: var(--neon-yellow);
+}
+
+
+/* Silly Billy Bubbles styles */
+
+.bubble-wrapper {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 200; 
+    pointer-events: none;
+}
+
+#bubble-intro {
+    position: absolute;
+    top: 30vh;
+    left: 40vw;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+#bubble-outro {
+    position: absolute;
+    top: 4em;
+    right: 2em;
+    width: 3rem;
+    height:3rem;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open-billy-bubbles-btn {
+    position: relative;
+    height: 1.7rem;
+    width: 1.7rem;
+    border: 2px solid var(--bubble-border-color);
+    background-color: var(--bubble-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    box-shadow: 0 0 0.1em 0.1em var(--bubble-boxshadow-color);
+    z-index: 150;
+    cursor: pointer;
+    pointer-events: all;
+    transition: 150ms ease;
+    -webkit-transition: 150ms ease;
+    -moz-transition: 150ms ease;
+    -ms-transition: 150ms ease;
+    -o-transition: 150ms ease;
+}
+
+.open-billy-bubbles-btn img {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: 0;
+    top: 0;
+    background-color: red;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.open-billy-bubbles-btn:hover {
+    scale: 1.2;
+}
+
+#billy-btn-tooltip {
+    color: #fff;
+    position: absolute;
+    left: -150%;
+    top: 150%;
+    padding: 0.2rem;
+    background: var(--bubble-content-color);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: 150ms ease;
+    -webkit-transition: 150ms ease;
+    -moz-transition: 150ms ease;
+    -ms-transition: 150ms ease;
+    -o-transition: 150ms ease;
+}
+
+#billy-btn-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    right: 10%;
+    border: 0.8em solid transparent;
+    border-bottom: 0.8em solid var(--bubble-content-color);
+}
+
+.show#billy-btn-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* this is the container for the main bubble stuff (not the indicator) */
+.silly-billy-bubbles {
+    position: absolute;
+    top: 8svh;
+    left: 40vw;
+    width: clamp(10em, 30vw, 18.5em);
+    height: clamp(5em, 9vw, 6em);
+    z-index: 99;
+    filter: drop-shadow(0 0 1rem var(--bubble-boxshadow-color));
+    -webkit-filter: drop-shadow(0 0 1rem var(--bubble-boxshadow-color));
+}
+
+.billy-bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--bubble-color);
+    width: clamp(3em, 9vw, 5em);
+    height: clamp(3em, 9vw, 5em);
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+    border: 6px solid var(--bubble-border-color);
+    box-shadow: 0 0 0.1em 0.1em var(--bubble-boxshadow-color),    inset 0 0 0.1em 0.1em var(--bubble-boxshadow-color);
+    z-index: 1;
+    transform-origin: center center;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    z-index: 1;
+    transition: 50ms ease;
+    -webkit-transition: 50ms ease;
+    -moz-transition: 50ms ease;
+    -ms-transition: 50ms ease;
+    -o-transition: 50ms ease;
+    filter: drop-shadow(0 0 0.5rem var(--bubble-boxshadow-color));
+    -webkit-filter: drop-shadow(0 0 0.5rem var(--bubble-boxshadow-color));
+}
+
+.billy-bubble img {
+    position: absolute;
+    top: -10%;
+    left: -8%;
+    width: 120%;
+    height: 120%;
+    filter: drop-shadow(0 0 .3rem var(--bubble-boxshadow-color));
+    -webkit-filter: drop-shadow(0 0 .3rem var(--bubble-boxshadow-color));
+}
+
+.bubble-shaper {
+    float: left;
+    display: flow-root;
+    shape-outside: circle(50%);
+    width: clamp(4em, 10vw, 7em);
+    height: clamp(3em, 9vw, 6em);
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+    background: transparent;
+}
+
+.bubble-content {
+    --height: min-content;
+
+    font-family: var(--bubble-font);
+    font-size: var(--bubble-font-size);
+    font-weight: var(--bubble-font-weight);
+    line-height: calc(var(--bubble-font-size) * 1.4);
+    letter-spacing: 0.1rem;
+    padding: 0.8rem 1rem 0.8rem 1.8rem;
+    margin-left: 0.5rem;
+    background: var(--bubble-content-color);
+    width: 0;
+    height: var(--height);
+    z-index: -1;
+    border: 6px solid var(--bubble-border-color);
+    box-shadow: inset 0 0 0.1em 0.1em var(--bubble-boxshadow-color);
+    transform-origin: left center;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    border-radius: 2em;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    -ms-border-radius: 2em;
+    -o-border-radius: 2em;
+    letter-spacing: 0.03rem;
+}
+
+#bubble-indicator {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: clamp(2rem, 10vw, 2.5em);
+    width: clamp(2rem, 10vw, 2.5em);
+    padding: 0.2rem;
+    background: var(--bubble-indicator-color);
+    border: 2px solid var(--bubble-border-color);
+    box-shadow: 0 0 0em 0.1em var(--bubble-boxshadow-color),    0 0 1rem 0.2rem var(--bubble-boxshadow-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    opacity: 0;
+}
+
+.bubble-btn {
+    position: absolute;
+    right: -10%;
+    aspect-ratio: 1;
+    color: #222;
+    cursor: pointer;
+    letter-spacing: -0.1rem;
+    font-weight: bold;
+    background: var(--bubble-btn-color);
+    border: 2px solid var(--bubble-border-color);
+    padding: .2rem;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    opacity: 0;
+    scale: 0;
+    transition: 150ms ease;
+    -webkit-transition: 150ms ease;
+    -moz-transition: 150ms ease;
+    -ms-transition: 150ms ease;
+    -o-transition: 150ms ease;
+    box-shadow: 0 0 0.5rem 0.1rem var(--bubble-boxshadow-color);
+    pointer-events: all;
+}
+
+.close-bubble {
+    top: 10%;
+    padding: 0.25rem 0.6rem 0.5rem 0.5rem;
+}
+.continue-bubble {
+    padding: 0.2rem 0.3rem;
+    bottom: 10%;
+    text-decoration: none;
+}
+
+.highlight {
+    animation: highlighter 500ms forwards;
+    -webkit-animation: highlighter 500ms forwards;
+}
+
+@keyframes highlighter {
+    0% {
+        outline: 0px ridge var(--bubble-content-color);
+        outline-offset: 0px;
+    }
+    30% {    
+        outline: 10px ridge var(--bubble-btn-color);
+        outline-offset: 10px;
+    }
+    100% {    
+        outline: 5px ridge var(--bubble-highlighter-color);
+        outline-offset: 5px;
+    }
+}
