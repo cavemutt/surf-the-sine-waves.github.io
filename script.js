@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
     animate()
     setTimeout(() => {
         startBillyBubbles()
-    }, 1000)
+    }, 2000)
 })
 
 // take screenshot
@@ -162,8 +162,6 @@ const colorizeSliders = (hue, sat, lightness) => {
 
 body.style.backgroundColor = `rgba(${backgroundColor.r} ${backgroundColor.g} ${backgroundColor.b} ${backgroundColor.a})`
 
-
-// let increment = wave.frequency
 
 const animate = () => {
     requestAnimationFrame(animate);
