@@ -7,13 +7,14 @@ Change the waves to make a beautiful generative art piece of your own!
 
 ## This project uses : 
 HTML5, CSS3, JavaScript, HTML Canvas, and GSAP (for the Silly Billy Bubbles Tour)
+
 **Note:** This project uses animated visual patterns that may be uncomfortable or potentially harmful for photosensitive users.
 
 ## Features summary :
 - This app begins with an ALERT warning that the lights used in this app may not be suitable for photosensitive users.
 - A Wave Dynamics dropdown tab allows users to change several parameters of the waves, including length, amplitude, speed and the shape.
 - A Wave Color dropdown tab allows user to change the base hue, the saturation, and the lightness of the waves.
-- A Screenshot button allows users to take a screenshot of the current state of the waves and save it to your computer.
+- A Screenshot button allows users to take a screenshot of the current state of the waves and save it to their computer.
 - A Video button allows user to take a 10 second video of the waves in action and download it. (The browser first requires permission from the user)
 - The color controls in the Wave Color tab mirror the color of the waves as you change them.
 - A brief tour of the app, along with some explanation of the controls, is provided by The Silly Billy Bubbles Tour, which you can close and restart at any time.
@@ -34,6 +35,15 @@ This app is best enjoyed on a desktop, and is ok on smaller screen sizes, but ju
 
 If you see any errors or have any comments or suggestions, please let me know! Feel free to email me at jennifer_lee_dev@protonmail.com
 
+### Credits :
+Thanks to Chris Courses on YouTube for the HTML5 Canvas tutorials!
+
+A shout out to the biggest influences on my Web Dev journey :
+Kevin Powell (Youtube, courses on Scrimba and https://www.kevinpowell.co/)
+Developed By Ed (Youtube, Udemy, courses at https://developedbyed.com/)
+Web Dev Simplified (Youtube, courses at https://courses.webdevsimplified.com/)
+Zero To Mastery Academy (school, https://zerotomastery.io/)
+Promineo Tech (school, https://promineotech.com/)
 
 Thanks for looking, and please enjoy!
 
