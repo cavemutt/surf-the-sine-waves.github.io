@@ -101,7 +101,7 @@
     left: -150%;
     top: 150%;
     padding: 0.2rem;
-    background: var(--bubble-content-color);
+    background: var(--bubble-border-color);
     border-radius: 0.5rem;
     -webkit-border-radius: 0.5rem;
     -moz-border-radius: 0.5rem;
@@ -122,7 +122,7 @@
     top: -25%;
     right: 10%;
     border: 0.8em solid transparent;
-    border-bottom: 0.8em solid var(--bubble-content-color);
+    border-bottom: 0.8em solid var(--bubble-border-color);
 }
 
 .show#billy-btn-tooltip {
@@ -200,6 +200,7 @@
 .bubble-content {
     --height: min-content;
 
+    color: whitesmoke;
     font-family: var(--bubble-font);
     font-size: var(--bubble-font-size);
     font-weight: var(--bubble-font-weight);

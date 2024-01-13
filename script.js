@@ -335,7 +335,7 @@ function bubblePosition(el) {
     if(el.hasAttribute('data-boundingBubbleX')) {
         elBoundingLeft <= body.offsetLeft ? bubbleContainer.style.left = '20px' : elBoundingLeft + bubbleContainer.offsetWidth + 20 >= body.offsetWidth ? bubbleContainer.style.left = (body.offsetWidth - (bubbleContainer.offsetWidth + 40) - 40) + 'px' : bubbleContainer.style.left = (elBoundingLeft + 20) + 'px'
     } else {
-        elOffsetLeft <= body.offsetLeft ? bubbleContainer.style.left = '20px' : elOffsetLeft + bubbleContainer.offsetWidth + 20 >= body.offsetWidth ? bubbleContainer.style.left = (body.offsetWidth - (bubbleContainer.offsetWidth + 20)) + 'px' : bubbleContainer.style.left = (elOffsetLeft + 20) + 'px'
+        elOffsetLeft <= body.offsetLeft ? bubbleContainer.style.left = '20px' : elOffsetLeft + bubbleContainer.offsetWidth + 20 >= body.offsetWidth ? bubbleContainer.style.left = (body.offsetWidth - (bubbleContainer.offsetWidth + 40)) + 'px' : bubbleContainer.style.left = (elOffsetLeft + 20) + 'px'
     }
 
 }
@@ -430,6 +430,8 @@ function openBillyBubbles(element) {
     .fromTo(bubbleIndicatorDot, {opacity: 0, scale: 0}, {opacity: 1, scale: 1}, '-=.5')
     .to(closeBubbleBtn, {opacity: 0.8, scale: 1}, '-=.2')
     .to(nextBubbleBtn, {opacity: 0.8, scale: 1}, '-=.6')
+
+    
 }
 
 function topAtEnd() {
